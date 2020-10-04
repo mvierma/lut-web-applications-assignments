@@ -33,13 +33,17 @@ function clickHandler() {
   let x = this.id;
   if (board[x] === "" && turn === 0) {
     board[x] = "x";
-    this.innerHTML = "x";
+    this.setAttribute("id", "p1");
     isOver("x");
+    progress++;
+    updateProgress(progress);
     turn++;
   } else if (board[x] === "" && turn === 1) {
     board[x] = "o";
-    this.innerHTML = "o";
+    this.setAttribute("id", "p2");
     isOver("o");
+    progress++;
+    updateProgress(progress);
     turn = turn - 1;
   }
 }
@@ -231,14 +235,24 @@ function checkDiagonal(board, mark) {
   }
 }
 
+function updateProgress(progress) {
+  let progBar = document.getElementById("filled");
+  let calculated = `${(progress / 25) * 100}%`;
+  progBar.style["width"] = calculated;
+}
+
 // variables for keeping track of turns and gameboard
 let turn = 0;
+let progress = 0;
 let board = createBoard(5);
 
 // draw the playing area
 document.getElementById("app").innerHTML = `
 <div id="board">
 
+</div>
+<div id="progress-bar" style="border:1px solid black; width:330px">
+  <div id="filled"></div>
 </div>
 `;
 document.getElementById("board").innerHTML = `<table></table>`;

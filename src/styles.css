@@ -1,9 +1,35 @@
 body {
   font-family: sans-serif;
 }
-table td {
+td {
   text-align: center;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#filled {
+  width: 0%;
+  height: 25px;
+  background: green;
+}
+
+#p1 {
+  background: rgb(124, 252, 0);
+}
+
+#p1::after {
+  content: "x";
+  font: "Helvetica";
+  font-size: 30px;
+}
+
+#p2 {
+  background: rgb(250, 128, 114);
+}
+#p2::after {
+  content: "o";
+  font: "Helvetica";
+  font-size: 30px;
 }
